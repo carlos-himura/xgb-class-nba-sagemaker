@@ -25,33 +25,28 @@ Validation of predictions from the endpoint
 | **predictions_binary_only.csv**   | Local model predictions using binary classification outputs (0/1). Used to compare training behavior.                                                                                                 |
 | **predictions_from_endpoint.csv** | Predictions generated from the deployed SageMaker endpoint to validate inference pipeline consistency.                                                                                                |
 
-Hyperparameter Optimization (Hyperopt)
+# Hyperparameter Optimization (Hyperopt)
 
 Hyperopt was used to automatically search for the optimal XGBoost parameters.
 The notebook runs:
 
-Random + Bayesian optimization
+- Random + Bayesian optimization
 
-Search space for key parameters like:
-max_depth
-eta
-min_child_weight
-subsample
-colsample_bytree
-gamma
+- Search space for key parameters like:
+  -max_depth
+  -eta
+  -min_child_weight
+  -subsample
+  -colsample_bytree
+  -gamma
 
 The best set of parameters found by Hyperopt is passed into train.py for SageMaker training.
 
-Class Balancing Strategy
+# Class Balancing Strategy
 
-The dataset has imbalance between classes.
-To address this, the project uses XGBoost’s:
-
-scale_pos_weight
-
-This parameter was automatically computed as:
+The dataset contains imbalance between classes.
+To address this, the model uses XGBoost’s scale_pos_weight, computed as:
 
 scale_pos_weight = negative_samples / positive_samples
 
-
-This helps the model correctly penalize underrepresented classes and improves prediction accuracy for minority outcomes.
+This helps the model penalize the minority class appropriately and improves prediction accuracy for underrepresented outcomes.
