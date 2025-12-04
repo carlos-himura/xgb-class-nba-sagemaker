@@ -67,4 +67,4 @@ Confusion Matrix
  [113 576]]
 
 
-These results indicate a strong balance between precision and recall, with particularly high ROC AUC, showing that the model discriminates well between “Above Average” and “Below Average” player performance. The high recall for the positive class suggests that the class balancing strategy and Hyperopt-optimized parameters contributed effectively to improving minority class detection.
+These results indicate a strong balance between precision and recall, with particularly high ROC AUC, showing that the model discriminates well between “Above Average” and “Below Average” player performance. The high recall for the positive class suggests that the class balancing strategy and Hyperopt optimized parameters contributed effectively to improving minority class detection.
