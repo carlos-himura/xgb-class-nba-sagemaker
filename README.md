@@ -50,3 +50,21 @@ To address this, the model uses XGBoost’s scale_pos_weight, computed as:
 scale_pos_weight = negative_samples / positive_samples
 
 This helps the model penalize the minority class appropriately and improves prediction accuracy for underrepresented outcomes.
+
+# Model Performance on Test Set
+
+After deploying the XGBoost classifier through the SageMaker pipeline and validating the final model, the following performance metrics were obtained:
+
+Evaluation Metrics
+- Accuracy: 0.8394
+- Precision: 0.7660
+- Recall: 0.8360
+- F1 Score: 0.7994
+- ROC AUC: 0.9300
+
+Confusion Matrix
+[[935 176]
+ [113 576]]
+
+
+These results indicate a strong balance between precision and recall, with particularly high ROC AUC, showing that the model discriminates well between “Above Average” and “Below Average” player performance. The high recall for the positive class suggests that the class balancing strategy and Hyperopt-optimized parameters contributed effectively to improving minority class detection.
