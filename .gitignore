@@ -1,0 +1,64 @@
+ChatGPT said:
+
+Bro, eso pasa porque Git está agarrando absolutamente todo lo que existe en tu carpeta, incluyendo:
+
+archivos temporales
+
+checkpoints de Jupyter
+
+datasets CSV
+
+archivos .pyc
+
+predicciones
+
+versiones intermedias
+
+Pero tú NO quieres subir nada de eso a GitHub.
+Solo quieres:
+
+✔️ tus notebooks
+✔️ tu código .py
+✔️ tu requirements.txt
+
+Y evitar basura.
+
+✅ SOLUCIÓN: crear un .gitignore antes de hacer el git add .
+
+NO subas esos cientos de archivos. Cancela ese commit.
+
+🔥 1. Resetea el git add
+
+Ejecuta:
+
+git reset
+
+
+Ahora Git no tendrá nada staged.
+
+🔥 2. Crea un .gitignore limpio (SageMaker-friendly)
+
+En SageMaker, ejecuta:
+
+nano .gitignore
+
+
+Pega esto:
+
+# Ignore Jupyter notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore Python cache
+__pycache__/
+*.pyc
+
+# Ignore model artifacts
+model/
+*.tar.gz
+
+# Ignore SageMaker config
+*.json
+*.log
+
+# Ignore hidden system files
+.DS_Store
